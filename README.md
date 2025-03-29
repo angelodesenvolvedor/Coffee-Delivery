@@ -32,4 +32,4 @@ O **Coffee Delivery** é uma **landing page** desenvolvida para fornecer uma exp
 
 ## 📄 Licença  
 
-- Esse projeto está sob a licença MIT license - acesse os detalhes [LICENSE.md]().  
+- Esse projeto está sob a licença MIT license - acesse os detalhes [LICENSE.md](https://github.com/angelodesenvolvedor/CoffeeDelivery/tree/master?tab=License-1-ov-file).  
