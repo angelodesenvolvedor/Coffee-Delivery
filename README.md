@@ -12,7 +12,7 @@ O **Coffee Delivery** é uma **landing page** desenvolvida para fornecer uma exp
 - Acessem um chat de suporte para tirar dúvidas.
 - Verifiquem um histórico dos pedidos realizados.
 
-### Funcionalidades principais:
+**Funcionalidades principais:**
 - **Barra de Pesquisa**: Encontre cafés por nome.
 - **Filtro de Preço**: Selecione cafés de acordo com o preço máximo.
 - **Carrinho de Compras**: Adicione cafés ao carrinho e veja o total da compra.
@@ -20,7 +20,7 @@ O **Coffee Delivery** é uma **landing page** desenvolvida para fornecer uma exp
 - **Histórico de Pedidos**: Exibe informações de pedidos anteriores.
 - **Chat de Suporte**: Permite conversar com o suporte, com mensagens simuladas.
 
-📦 **Tecnologias usadas:**
+## 📦 Tecnologias usadas:
 - **HTML**: Estrutura da página e conteúdo.
 - **CSS**: Estilos e design para uma interface atrativa.
 - **JavaScript**: Funcionalidades interativas, como pesquisa, filtragem, carrinho de compras e chat.
