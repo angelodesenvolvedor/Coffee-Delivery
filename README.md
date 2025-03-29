@@ -26,3 +26,10 @@ O **Coffee Delivery** é uma **landing page** desenvolvida para fornecer uma exp
 - **JavaScript**: Funcionalidades interativas, como pesquisa, filtragem, carrinho de compras e chat.
 - **Bootstrap**: Framework para tornar a página responsiva e fácil de estilizar.
 
+## 👷 Autor  
+
+- **Ângelo Silvano**  - *Front-End Developer* - [angelodesenvolvedor](https://github.com/angelodesenvolvedor)  
+
+## 📄 Licença  
+
+- Esse projeto está sob a licença MIT license - acesse os detalhes [LICENSE.md]().  
