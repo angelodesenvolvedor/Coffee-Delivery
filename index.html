@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Delivery</title>
+    <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center text-primary">Coffee Delivery ☕</h1>
+        <p class="text-center text-muted">Escolha seu café favorito e receba no conforto de sua casa!</p>
+
+        <!-- Barra de Pesquisa e Filtros -->
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" id="search-bar" class="form-control" placeholder="Pesquise pelo nome do café...">
+            </div>
+            <div class="col-md-6">
+                <select id="filter-price" class="form-control">
+                    <option value="">Filtrar por Preço</option>
+                    <option value="5">Até R$ 5,00</option>
+                    <option value="7">Até R$ 7,00</option>
+                    <option value="10">Até R$ 10,00</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-4" id="coffee-list">
+            <!-- Os cafés serão inseridos aqui pelo JavaScript -->
+        </div>
+
+        <h2 class="mt-4 text-secondary">🛒 Carrinho de Compras</h2>
+        <div class="cart-container">
+            <ul id="cart" class="list-group">
+                <!-- Itens do carrinho -->
+            </ul>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <h4 class="text-success">Total: <span id="total-price">R$ 0,00</span></h4>
+                <button class="btn btn-danger" onclick="clearCart()">Esvaziar Carrinho</button>
+                <button class="btn btn-success" onclick="openModal()">Finalizar Pedido</button>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmação de Pedido -->
+        <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="checkoutModalLabel">Confirme seu Pedido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="deliveryAddress" class="form-label">Endereço de Entrega</label>
+                            <input type="text" class="form-control" id="deliveryAddress" placeholder="Digite seu endereço">
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentMethod" class="form-label">Método de Pagamento</label>
+                            <select class="form-select" id="paymentMethod">
+                                <option value="Dinheiro">Dinheiro</option>
+                                <option value="Cartão">Cartão</option>
+                                <option value="PIX">PIX</option>
+                            </select>
+                        </div>
+                        <p><strong>Total:</strong> <span id="modal-total"></span></p>
+                        <p><strong>Data:</strong> <span id="modal-date"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="finalizeOrder()">Confirmar Pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat de Suporte -->
+        <button id="supportButton" class="btn btn-info btn-lg position-fixed bottom-0 end-0 m-4" onclick="openChat()">💬 Suporte</button>
+
+        <!-- Histórico de Pedidos -->
+        <div class="mt-4">
+            <h2 class="text-secondary">📜 Histórico de Pedidos</h2>
+            <ul id="order-history" class="list-group">
+                <!-- Histórico de pedidos será inserido pelo JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./image/logo.png" class="rounded me-2" alt="Coffee Icon" style="width: 20px; height: 20px;">
+                <strong class="me-auto">Cafeteria</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Mensagem aqui!
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportModalLabel">Chat de Suporte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="chat-body" class="chat-body" style="height: 200px; overflow-y: scroll; margin-bottom: 10px;">
+                        <!-- Mensagens do chat serão inseridas aqui -->
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="message-input" class="form-control" placeholder="Digite sua mensagem...">
+                        <button class="btn btn-primary" type="button" id="send-message">Enviar</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
